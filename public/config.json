@@ -1,0 +1,5 @@
+{
+  "useMockData": true,
+  "apiUrl": "http://localhost:7001/api",
+  "mockDelay": 500
+}
