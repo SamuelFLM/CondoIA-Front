@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -38,11 +37,11 @@ const nextConfig = {
         net: false,
         tls: false,
         // Remove crypto polyfill
-      }
+      };
     }
 
-    return config
+    return config;
   },
-}
+};
 
 module.exports = nextConfig
