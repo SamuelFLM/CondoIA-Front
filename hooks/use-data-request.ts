@@ -20,21 +20,20 @@ export function useDataRequest<T>({ endpoint, mockData, autoRefreshInterval }: D
     try {
       // Simular atraso de rede
       await new Promise((resolve) => setTimeout(resolve, 1000))
-
       // Se estamos usando dados mockados, retorná-los
       if (mockData) {
         setData(mockData)
         return
       }
 
-      // Caso contrário, fazer a requisição real
-      const response = await fetch(`/api${endpoint}`)
-      if (!response.ok) {
-        throw new Error(`Erro ao buscar dados: ${response.statusText}`)
-      }
+      // // Caso contrário, fazer a requisição real
+      // const response = await fetch(`/api${endpoint}`)
+      // if (!response.ok) {
+      //   throw new Error(`Erro ao buscar dados: ${response.statusText}`)
+      // }
 
-      const result = await response.json()
-      setData(result)
+      // const result = await response.json()
+      // setData(result)
     } catch (err) {
       setError(err instanceof Error ? err : new Error("Erro desconhecido ao buscar dados"))
     } finally {

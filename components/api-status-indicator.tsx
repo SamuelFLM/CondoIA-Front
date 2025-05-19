@@ -1,20 +1,21 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { getConfig } from "@/lib/config-service"
-import { AlertCircle, CheckCircle2, CloudOff } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { useState, useEffect } from "react";
+import { getConfig } from "@/lib/config-service";
+import { AlertCircle, CheckCircle2, CloudOff } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function ApiStatusIndicator({ className }: { className?: string }) {
-  const [status, setStatus] = useState<"online" | "offline" | "checking">("checking")
-  const config = getConfig()
+  const [status, setStatus] = useState<"online" | "offline" | "checking">(
+    "checking"
+  );
+  const config = getConfig();
 
   useEffect(() => {
     const checkApiStatus = async () => {
       // Como estamos sempre no modo mock, definir como offline/mock
-      setStatus("offline")
-
-      /* Código original comentado
+      // setStatus("offline")
+      // Código original comentado
       // Se estiver no modo mock, não precisa verificar a API
       if (config.useMockData) {
         setStatus("offline");
@@ -36,16 +37,15 @@ export function ApiStatusIndicator({ className }: { className?: string }) {
         console.error("Erro ao verificar status da API:", error);
         setStatus("offline");
       }
-      */
-    }
+    };
 
-    checkApiStatus()
+    checkApiStatus();
 
     // Verifica o status da API a cada 30 segundos
-    const interval = setInterval(checkApiStatus, 30000)
+    // const interval = setInterval(checkApiStatus, 30000);
 
-    return () => clearInterval(interval)
-  }, [config.apiUrl, config.useMockData])
+    // return () => clearInterval(interval);
+  }, [config.apiUrl, config.useMockData]);
 
   return (
     <div className={cn("flex items-center gap-1.5 text-xs", className)}>
@@ -79,5 +79,5 @@ export function ApiStatusIndicator({ className }: { className?: string }) {
         </>
       )}
     </div>
-  )
+  );
 }
